@@ -1,7 +1,6 @@
-
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Table } from 'react-bootstrap';
 import React, { Component } from 'react';
+import { Table } from 'react-bootstrap';
 
 import styles from './App.css';
 
@@ -71,15 +70,14 @@ class App extends Component {
       });
     }
 
+
+
     return (
-
-
       <div className={styles.app}>
-
-        <table className={styles.table}>
+        <Table striped bordered hover className={styles.table}>
           <thead>
             <tr>
-              <th>S/N</th>
+              <th>#</th>
               <th>First Name</th>
               <th>Last Name</th>
             </tr>
@@ -87,15 +85,36 @@ class App extends Component {
           <tbody>
             {users}
           </tbody>
-        </table>
-
-
-        <div className={styles.pagination}>
+        </Table>
+        
+        {/* <div className={styles.pagination}>
           <span onClick={() => this.makeHttpRequestWithPage(1)}>&laquo;</span>
           {renderPageNumbers}
           <span onClick={() => this.makeHttpRequestWithPage(1)}>&raquo;</span>
-        </div>
+        </div> */}
 
+
+        <nav>
+          <ul className='pagination'>
+            <li className='page-item'>
+              <a onClick={() => this.makeHttpRequestWithPage(1)} href='!#' className='page-link'>
+                &laquo;
+              </a>
+            </li>
+            {pageNumbers.map(number => (
+              <li key={number} className='page-item'>
+                <a onClick={() => this.makeHttpRequestWithPage(number)} href='!#' className='page-link'>
+                  {number}
+                </a>
+              </li>
+            ))}
+            <li className='page-item'>
+              <a onClick={() => this.makeHttpRequestWithPage(2)} href='!#' className='page-link'>
+                &raquo;
+              </a>
+            </li>
+          </ul>
+        </nav>
       </div>
     );
   }
